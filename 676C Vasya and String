@@ -1,0 +1,46 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+#define lli long long int
+#define ulli unsigned long long int
+#define MOD 1000000007
+int maxPerfectness(int n,int k, string str){
+                int maxPerfectness=0,  counta=0, countb=0;
+                int start=0;
+                for(int i=0;i<n;i++){
+                    if(str[i]=='a'){
+                        counta++;
+                    }
+                    else{
+                        countb++;
+                    }
+                    int mincount= min(counta, countb);
+                    if(mincount <= k){
+                        maxPerfectness = counta+countb;
+                        //maxPerfectness= max(maxPerfectness, currlen);
+                    }
+                    else{
+                        if(str[start]=='a'){
+                            counta--;
+                        }
+                        else{
+                            countb--;
+                        }
+                        start++;
+                    }
+                }
+
+                return maxPerfectness;
+}
+
+int main()
+{
+            
+                int n,k;
+                cin>>n>>k;
+                string str; cin>>str;
+                cout<<maxPerfectness(n,k, str)<<endl;//for max len substring of any char
+}
+
+
+
